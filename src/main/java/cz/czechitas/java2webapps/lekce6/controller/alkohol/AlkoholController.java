@@ -26,19 +26,19 @@ public class AlkoholController {
   }
 
   @PostMapping("")
-  public Object form(@Valid @ModelAttribute("form") AlkoholForm form, BindingResult bindingResult) {
-/*
-    if (form.getVek() < 18) {
-      return "/alkohol/nizky-vek";
-    }
-*/
+  public Object form(@Valid @ModelAttribute("form") AlkoholForm form, BindingResult bindingResult) { // validace
 
-    if (bindingResult.hasErrors()) {
+    if (form.getVek() < 18) {
+      return "/alkohol/nizky-vek"; // error, kdy nelze prodat alkohol <18
+    }
+
+
+    if (bindingResult.hasErrors()) { // validace dopadla špatně, nechám uživatele opravit
       return "/alkohol/formular";
     }
 
-    return new ModelAndView("/alkohol/objednano")
-            .addObject("kod", Math.abs(random.nextInt()))
-            .addObject("email", form.getEmail());
+    return new ModelAndView("/alkohol/objednano") // validace dopadla dobře, přesměruji uživatele na objednáno
+            .addObject("kod", Math.abs(random.nextInt())) // náhodné číslo objednávky
+            .addObject("email", form.getEmail()); // e-mail zadaný do formuláře
   }
 }

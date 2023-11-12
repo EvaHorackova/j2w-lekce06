@@ -5,7 +5,7 @@ import java.util.EnumSet;
 /**
  *
  */
-public class RocniObdobiForm {
+public class RocniObdobiForm { // k výběru je více checkboxů z enum (enum set)
   private EnumSet<RocniObdobiEnum> oblibene = EnumSet.noneOf(RocniObdobiEnum.class);
 
   public EnumSet<RocniObdobiEnum> getOblibene() {

@@ -1,5 +1,5 @@
 [#ftl]
-[#import "/spring.ftl" as spring]
+[#import "/spring.ftl" as spring] [#--import maker pro validaci--]
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -12,7 +12,7 @@
     <form class="kosik" action="/alkohol" method="post">
         <h1>Objednávka alkoholu</h1>
         <label for="zbozi" class="radek">Zboží:</label>
-        [@spring.formSingleSelect path="form.zbozi" options={
+        [@spring.formSingleSelect path="form.zbozi" options={ [#--makro pro selectBox--]
             "": "",
             "1": "Veltlín – Sauvignon kabinet",
             "2": "Rulanské šedé suché",
@@ -26,7 +26,7 @@
         <div class="radek">Objem:</div>
         <div class="skupina">
             <div>
-                <input id="objem1" type="radio" name="objem" value="OBJEM_250ML"/>
+                <input id="objem1" type="radio" name="objem" value="OBJEM_250ML"/> [#--enum--]
                 <label for="objem1">250 ml</label>
             </div>
             <div>
@@ -42,8 +42,8 @@
         <div class="error">[@spring.showErrors "<br>"/]</div>
 
         <label for="jmeno" class="radek">Jméno a příjmení:</label>
-        [@spring.formInput path="form.jmeno" /]
-        <div class="error">[@spring.showErrors "<br>"/]</div>
+        [@spring.formInput path="form.jmeno" /] [#--volání makra--]
+        <div class="error">[@spring.showErrors "<br>"/]</div> [#--volání makra--]
 
         <label for="vek" class="radek">Věk:</label>
         [@spring.formInput path="form.vek" fieldType="number" /]

@@ -20,7 +20,7 @@ public class RocniObdobiController {
  }
 
  @PostMapping("")
- public String post(@ModelAttribute("form") RocniObdobiForm form) {
+ public String post(@ModelAttribute("form") RocniObdobiForm form) { // na vstupu JB, na výstupu Spring naplní data do enum setu z prohlížeče
   return "rocni-obdobi";
  }
 }

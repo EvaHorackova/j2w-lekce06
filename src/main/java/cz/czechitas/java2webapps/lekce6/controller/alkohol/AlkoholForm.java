@@ -7,19 +7,19 @@ import jakarta.validation.constraints.*;
 public class AlkoholForm {
   @NotBlank
   private String zbozi;
-  @NotNull
-  private Objem objem;
+  @NotNull // pravidlo validace - kontroluje ne/vyplněnost hodnoty (vyhoví prázdný string)
+  private Objem objem; // enum
   @NotBlank
   private String jmeno;
-  @Min(18)
+  @Min(18) // int, pravidlo validace - min, max
   @Max(150)
   private int vek;
-  @Email
-  @NotBlank
+  @Email // pravidlo validace - e-mail (@, nepovolené znaky)
+  @NotBlank // pravidlo validace - kontroluje ne/vyplněnost hodnoty (nevyhoví prázdný string)
   private String email;
   @AssertTrue
-  private boolean obchodniPodminky;
-  private boolean newsletter;
+  private boolean obchodniPodminky; // checkbox s neudělením/udělením souhlasu (bool), pravidlo validace - kontroluje vyplněnost hodnoty true
+  private boolean newsletter; // checkbox s neudělením/udělením souhlasu (bool)
 
   public String getZbozi() {
     return zbozi;
